@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "jsonserver": "json-server --watch src/data/movies.json --port 3001"
+    "mockserver:movies": "json-server --watch src/data/movies.json --port 3001"
   },
   "dependencies": {
     "axios": "^1.7.1",

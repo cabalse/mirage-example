@@ -17,7 +17,7 @@ function App() {
   useEffect(() => {
     setLoading(true)
     getMovies().then((response: any) => {
-      setData(response.data.results)
+      setData(response.data) // Changed from response.data.results
       setLoading(false)
     })
   }, [])
