@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import MovieDialog from './components/movie-dialog'
-import MovieCard from './components/movie-card'
 import {
   deleteMovie,
   getMovies,
@@ -8,15 +7,18 @@ import {
   updateMovie,
 } from './services/api.services'
 import Movie from './types/movie'
-import AddMovieButton from './components/add-movie-button'
+import MovieList from './components/movie-list'
 
 function App() {
   const [data, setData] = useState<Movie[]>([])
   const [dialogueOpen, setDialogueOpen] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>(false)
 
   useEffect(() => {
+    setLoading(true)
     getMovies().then((response) => {
       setData(response.data.results)
+      setLoading(false)
     })
   }, [])
 
@@ -57,17 +59,13 @@ function App() {
       <div className="h-screen flex items-center justify-center">
         <div className="flex flex-col items-center justify-center m-10">
           <div className="text-xl font-bold">SW MOVIES</div>
-          <div>
-            {data.map((movie: Movie) => (
-              <MovieCard
-                key={movie.episode_id}
-                movie={movie}
-                getMovieData={handleUpdateMovie}
-                handleDeleteMovie={handleDeleteMovie}
-              />
-            ))}
-            <AddMovieButton onClick={openAddMovieDialogue} />
-          </div>
+          <MovieList
+            movies={data}
+            getMovieData={handleUpdateMovie}
+            handleDeleteMovie={handleDeleteMovie}
+            openAddMovieDialogue={openAddMovieDialogue}
+            loading={loading}
+          />
         </div>
       </div>
       {dialogueOpen ? (

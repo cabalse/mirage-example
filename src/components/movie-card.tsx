@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { AiOutlineEdit } from 'react-icons/ai'
 import MovieDialog from './movie-dialog'
 import Movie from '../types/movie'
+import Card from './card'
+import TitleRow from './title-row'
 
 type props = {
   movie: Movie
@@ -22,16 +24,13 @@ const MovieCard = ({ movie, getMovieData, handleDeleteMovie }: props) => {
 
   return (
     <>
-      <div className="p-4 bg-gray-200 my-2 rounded">
-        <div className="flex flex-row justify-between">
-          <div className="text-lg font-bold">{movie.title}</div>
-          <div className="ml-3">
-            <AiOutlineEdit onClick={openDialog} />
-          </div>
-        </div>
+      <Card>
+        <TitleRow title={movie.title}>
+          <AiOutlineEdit onClick={openDialog} />
+        </TitleRow>
         <div>{movie.director}</div>
         <div>{movie.release_date}</div>
-      </div>
+      </Card>
       {displayDialog ? (
         <MovieDialog
           title="Edit Movie"

@@ -1,4 +1,5 @@
 import { IoMdAdd } from 'react-icons/io'
+import Card from './card'
 
 type Props = {
   onClick: () => void
@@ -6,13 +7,11 @@ type Props = {
 
 const AddMovieButton = ({ onClick }: Props) => {
   return (
-    <div className="p-4 bg-gray-200 my-2 rounded" onClick={onClick}>
-      <div className="flex flex-row justify-center">
-        <div>
-          <IoMdAdd />
-        </div>
+    <Card centerContent>
+      <div onClick={onClick}>
+        <IoMdAdd />
       </div>
-    </div>
+    </Card>
   )
 }
 
