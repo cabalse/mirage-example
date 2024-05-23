@@ -16,7 +16,7 @@ function App() {
 
   useEffect(() => {
     setLoading(true)
-    getMovies().then((response) => {
+    getMovies().then((response: any) => {
       setData(response.data.results)
       setLoading(false)
     })
@@ -24,7 +24,7 @@ function App() {
 
   const handleAddMovie = (movie: Movie) => {
     newMovie(movie).then(() => {
-      getMovies().then((response) => {
+      getMovies().then((response: any) => {
         setData(response.data.results)
       })
     })
@@ -32,7 +32,7 @@ function App() {
 
   const handleUpdateMovie = (movie: Movie) => {
     newMovie(movie).then(() => {
-      updateMovie(movie).then((response) => {
+      updateMovie(movie).then((response: any) => {
         setData(response.data.results)
       })
     })
@@ -40,7 +40,7 @@ function App() {
 
   const handleDeleteMovie = (id: number) => {
     deleteMovie(id).then(() => {
-      getMovies().then((response) => {
+      getMovies().then((response: any) => {
         setData(response.data.results)
       })
     })
