@@ -1,8 +1,12 @@
 import axios from 'axios'
 import Movie from '../types/movie'
+import movies from '../data/movies'
 
-const getMovies = () =>
-  axios.get<Movie[]>(`${import.meta.env.VITE_API_BASE_URL}/films`)
+const getMovies = () => {
+  if (import.meta.env.DEV)
+    return new Promise((resolve) => resolve({ data: { results: movies } }))
+  return axios.get<Movie[]>(`${import.meta.env.VITE_API_BASE_URL}/films`)
+}
 
 const newMovie = (data: Movie) =>
   axios.post(`${import.meta.env.VITE_API_BASE_URL}/films`, data)
