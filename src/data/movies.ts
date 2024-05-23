@@ -1,7 +1,7 @@
 const movies = [
   {
     episode_id: 4,
-    title: 'A Noew Hope',
+    title: 'A New Hope',
     director: 'George Lucas',
     release_date: '1977-05-25',
   },
