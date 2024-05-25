@@ -31,8 +31,8 @@ function App() {
   }
 
   const handleUpdateMovie = (movie: Movie) => {
-    newMovie(movie).then(() => {
-      updateMovie(movie).then((response: any) => {
+    updateMovie(movie).then(() => {
+      getMovies().then((response: any) => {
         setData(response.data.results)
       })
     })
