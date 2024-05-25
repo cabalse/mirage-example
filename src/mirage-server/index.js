@@ -1,8 +1,10 @@
 import { createServer } from 'miragejs'
 import movies from '../data/movies'
 
-const mirageServer = () => {
+const mirageServer = ({ environment = 'test' }) => {
   createServer({
+    environment,
+
     routes() {
       this.urlPrefix = 'https://swapi.dev/api'
 

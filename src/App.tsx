@@ -10,7 +10,9 @@ import Movie from './types/movie'
 import MovieList from './components/movie-list'
 import mirageServer from './mirage-server'
 
-mirageServer()
+if (import.meta.env.DEV) {
+  mirageServer({ environment: 'development' })
+}
 
 function App() {
   const [data, setData] = useState<Movie[]>([])
