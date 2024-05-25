@@ -8,6 +8,9 @@ import {
 } from './services/api.services'
 import Movie from './types/movie'
 import MovieList from './components/movie-list'
+import mirageServer from './mirage-server'
+
+mirageServer()
 
 function App() {
   const [data, setData] = useState<Movie[]>([])
