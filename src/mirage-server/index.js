@@ -1,7 +1,7 @@
 import { Model, createServer } from 'miragejs'
 
 const mirageServer = ({ environment = 'test' }) => {
-  createServer({
+  const server = createServer({
     environment,
 
     models: {
@@ -54,6 +54,8 @@ const mirageServer = ({ environment = 'test' }) => {
       })
     },
   })
+
+  return server
 }
 
 export default mirageServer
