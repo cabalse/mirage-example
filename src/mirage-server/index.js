@@ -40,6 +40,18 @@ const mirageServer = ({ environment = 'test' }) => {
         const attrs = JSON.parse(request.requestBody)
         schema.results.create(attrs)
       })
+
+      this.put('/films', (schema, request) => {
+        const attrs = JSON.parse(request.requestBody)
+        const movie = schema.results.find(attrs.id)
+        movie.update(attrs)
+      })
+
+      this.delete('/films/:id', (schema, request) => {
+        let id = request.params.id
+        const movie = schema.results.where({ episode_id: id })
+        movie.destroy()
+      })
     },
   })
 }
