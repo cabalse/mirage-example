@@ -18,6 +18,7 @@ const MovieList = ({
   openAddMovieDialogue,
   loading = false,
 }: Props) => {
+  console.log('Movies', movies)
   return (
     <div>
       {loading ? (
